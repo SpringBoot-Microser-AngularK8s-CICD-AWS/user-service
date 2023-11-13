@@ -1,0 +1,28 @@
+#all microservices work on the port 9091
+server:
+  port: 9093
+
+#I want the application work on eureka server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+spring:
+
+  application:
+    name: USER-SERVICE
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/userdb
+    #password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver     #driver for mysql connection
+
+  jpa:
+    hibernate:
+      #if there are change on the database it will be updated and not create all the table again
+      ddl-auto: update  #create
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #convert orm language to mysql querry
